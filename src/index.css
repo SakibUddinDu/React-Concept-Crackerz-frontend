@@ -282,7 +282,7 @@ progress {
     font-size: 3.8rem;
   }
 }
-@media (max-width: 24em) {
+@media (max-width: 26em) {
   .app-header{
     width: 34rem;
     /* justify-content: space-between; */
