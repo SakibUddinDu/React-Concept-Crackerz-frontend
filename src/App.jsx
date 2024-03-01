@@ -19,10 +19,11 @@ const initialState = {
   answer: null,
   points: 0,
   highScore: 0,
-  secondsRemaining: 150,
+  secondsRemaining: 180,
 };
-
 const reducer = (state, action) => {
+  const question = state.questions.at(state.currentQuestionIndex);
+
   switch (action.type) {
     case "dataReceived":
       return {
@@ -43,7 +44,7 @@ const reducer = (state, action) => {
         // currentQuestionIndex: currentQuestionIndex + 1,
       };
     case "selectAnswer":
-      const question = state.questions.at(state.currentQuestionIndex);
+     
       return {
         ...state,
         answer: action.payload, //clicked item index
@@ -106,7 +107,7 @@ function App() {
       .then((res) => res.json())
       .then((data) => dispatch({ type: "dataReceived", payload: data }))
       //   catch
-      .catch((err) => dispatch({ type: "dataFailed" }));
+      .catch((err) => dispatch({ type: "dataFailed", payload: err }));
   }, []);
 
   return (
