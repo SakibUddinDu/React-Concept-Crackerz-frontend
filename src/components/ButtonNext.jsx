@@ -1,10 +1,13 @@
-function ButtonNext({answer, currentQuestionIndex, numQuestions, onDispatch}) {
+import { useQuiz } from "../contexts/quizContext";
+
+function ButtonNext() {
+  const {answer, currentQuestionIndex, numQuestions,dispatch } = useQuiz()
     if( answer === null) return;
     if (currentQuestionIndex < numQuestions - 1)
     return (
       <button
         className="btn btn-ui"
-        onClick={() => onDispatch({ type: "goNextQuestion" })}
+        onClick={() => dispatch({ type: "goNextQuestion" })}
       >
         Next
       </button>
@@ -14,7 +17,7 @@ function ButtonNext({answer, currentQuestionIndex, numQuestions, onDispatch}) {
     return (
       <button
         className="btn btn-ui"
-        onClick={() => onDispatch({ type: "finished" })}
+        onClick={() => dispatch({ type: "finished" })}
       >
         Finish
       </button>
